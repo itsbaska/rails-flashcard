@@ -12,4 +12,14 @@ Rails.application.routes.draw do
   post '/users', to: 'users#create'
   get '/users/:id', to: 'users#show', as: 'user'
 
+  get '/decks', to: "decks#index", as: "decks"
+  # get '/decks/:id', to: "decks#show", as: "deck"
+  get '/decks/:deck_id/cards/:id', to: "cards#show", as: "deck_card"
+
+  post '/decks/:deck_id/rounds', to: 'rounds#create'
+
+  # resources :decks do
+  #   resources :cards
+  # end
+
 end
