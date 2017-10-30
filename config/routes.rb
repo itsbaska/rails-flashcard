@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   end
 
   patch '/cards/:id/guesses', to: 'guesses#update'
+
+  get '/not_authorized', to: 'pages#not_authorized'
   # get '/rounds/:round_id/cards/:id', to: "cards#show", as: "round_card"
   # resources :decks do
   #   resources :cards

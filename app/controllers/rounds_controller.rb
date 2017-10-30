@@ -1,5 +1,6 @@
 class RoundsController < ApplicationController
   def create
+    return redirect_to '/login' unless logged_in?
     @deck = Deck.find(params[:deck_id])
     @round = Round.create(user_id: current_user.id, deck_id: @deck.id)
     session[:round_id] = @round.id
@@ -10,5 +11,6 @@ class RoundsController < ApplicationController
 
   def show
     @round = Round.find(params[:id])
+    authorize!(@round.user)
   end
 end

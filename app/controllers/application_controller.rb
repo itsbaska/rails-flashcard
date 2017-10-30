@@ -8,12 +8,12 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def logged_in?
-    session[:user_id] != nil
+    !!current_user
   end
   helper_method :logged_in?
 
   def authenticate!
-    redirect '/login' unless logged_in?
+   redirect_to '/login' unless logged_in?
   end
   helper_method :authenticate!
 
