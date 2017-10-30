@@ -10,8 +10,9 @@
 
   <body>
       <div class="buttons">
+      <%= link_to "Home", root_path %>
         <% if logged_in? %>
-        <%= link_to current_user.name, user_path(current_user) %>
+          <%= link_to current_user.name, user_path(current_user) %>
           <button class="button"><%= link_to "Logout", logout_path, method: :delete %></button>
         <% else %>
           <button class="button"><%= link_to "Register", new_user_path %></button>

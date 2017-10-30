@@ -12,10 +12,10 @@ class Round < ApplicationRecord
 
  def draw
     false_guesses = self.guesses.select { |guess| guess.correctness == false }
-    false_guesses.sample.card unless false_guesses == []
+    false_guesses.sample.card unless false_guesses.length == 0
   end
 
-  def first_guess
+  def first_guesses
     self.guesses.select { |guess| guess.count == 1 }.count
   end
 
