@@ -1,0 +1,36 @@
+<h2>Register</h2>
+<%= form_for :user, url: "/users" do |f| %>
+ <% if @user.errors.any? %>
+      <div id="errors">
+        <h3><%= pluralize(@user.errors.count, "error") %> prevented this from saving</h3>
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <p>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+    </p>
+    <p>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </p>
+    <p>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </p>
+    <p>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+    </p>
+    <p>
+      <%= f.submit "Register" %>
+    </p>
+<% end %>

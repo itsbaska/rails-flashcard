@@ -1,0 +1,16 @@
+<h2>Login</h2>
+<%= form_tag '/login' do %>
+ <% if @errors %>
+    <div id="errors">
+      <h3><%= pluralize(@errors.count, "error") %> prevented this from saving</h3>
+      <ul>
+        <% @errors.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  Email: <%= text_field_tag :email %>
+  Password: <%= password_field_tag :password %>
+  <%= submit_tag "Submit" %>
+<% end %>
