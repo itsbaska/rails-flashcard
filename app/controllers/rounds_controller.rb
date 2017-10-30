@@ -6,4 +6,8 @@ class RoundsController < ApplicationController
     @round.create_guesses
     redirect_to round_card_path(@round, @round.draw)
   end
+
+  def show
+    @round = Round.find(params[:id])
+  end
 end

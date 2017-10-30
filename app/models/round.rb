@@ -12,6 +12,14 @@ class Round < ApplicationRecord
 
  def draw
     false_guesses = self.guesses.select { |guess| guess.correctness == false }
-    false_guesses.sample.card
+    false_guesses.sample.card unless false_guesses == []
+  end
+
+  def first_guess
+    self.guesses.select { |guess| guess.count == 1 }.count
+  end
+
+  def total_guesses
+    self.guesses.reduce(0) { |sum, guess| sum + guess.count }
   end
 end

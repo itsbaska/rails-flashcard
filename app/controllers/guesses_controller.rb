@@ -4,16 +4,20 @@ class GuessesController < ApplicationController
     @round = Round.find(session[:round_id])
     @guess.increment!(:count)
 
-    if @guess.check_answer(params[:guess][:answer])
-      @guess.correctness = true
-      @guess.save
-      flash[:correctness] = "You answered previous question correctly!"
-      redirect_to round_card_path(@round, @round.draw)
+    if @round.draw
+      if @guess.check_answer(params[:guess][:answer])
+        @guess.correctness = true
+        @guess.save
+        flash[:correctness] = "You answered previous question correctly!"
+        redirect_to round_card_path(@round, @round.draw)
+      else
+        @guess.correctness = false
+        @guess.save
+        flash[:correctness] = "You answered previous question incorrectly!"
+        redirect_to round_card_path(@round, @round.draw)
+      end
     else
-      @guess.correctness = false
-      @guess.save
-      flash[:correctness] = "You answered previous question incorrectly!"
-      redirect_to round_card_path(@round, @round.draw)
+      redirect_to round_path(@round)
     end
   end
 end
