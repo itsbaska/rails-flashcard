@@ -1,0 +1,9 @@
+<% if flash[:correctness] %>
+  <div class="notice"><%= flash[:correctness] %></div>
+<% end %>
+
+<%= form_for :guess, url: "/cards/#{@card.id}/guesses", method: 'patch' do |f| %>
+  <%= f.label @card.question %>
+  <%= f.text_field :answer %>
+  <%= f.submit "Submit Answer" %>
+<% end %>

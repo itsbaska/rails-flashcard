@@ -1,6 +1,7 @@
 class CardsController < ApplicationController
   def show
-    @deck = Deck.find(params[:deck_id])
-    @card = @decks.cards.find(params[:id])
+    @round = Round.find(params[:round_id])
+    @deck = @round.deck
+    @card = @deck.cards.find(params[:id])
   end
 end

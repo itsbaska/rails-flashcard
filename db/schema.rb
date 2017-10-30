@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 20171030162317) do
   create_table "guesses", force: :cascade do |t|
     t.bigint "card_id"
     t.bigint "round_id"
-    t.integer "count"
-    t.boolean "correctness"
+    t.integer "count", default: 0
+    t.boolean "correctness", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["card_id"], name: "index_guesses_on_card_id"
